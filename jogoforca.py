@@ -14,18 +14,21 @@ class Forca:
             print(f'({self.__chute}) está na palavra')
             Forca.sim.append(self.__chute)
             certo.append(self.__chute)
+            Forca.tentativa -= 1
+            print(f'Você tem {10 - Forca.tentativa}/10 tentativa(s).')
+
             """Condição para ganhar"""
             for i in sorted(Forca.frase):
                 for x in sorted(certo):
                     if x == i and len(Forca.sim) == len(Forca.frase):
                         print('Ganhou')
         else:
-            print(f'({self.__chute}) não está na palavra')
+            print(f'({self.__chute}) não está na palavra.')
             Forca.tentativa -= 1
             resto = 10 - Forca.tentativa
-            print(f'Perdeu um(a) {resto}/10 tentativa')
+            print(f'Perdeu um(a) {resto}/10 tentativa(s).')
             if resto == 10:
-                print("Acabou as tentativas, você perdeu")
+                print("Acabou as tentativas, você perdeu.")
 
 while True:
     jogo = Forca(input('Chute uma letra:\t'))
